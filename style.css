@@ -1,4 +1,18 @@
 #root {
-  width: 800px;
-  height: 600px;
+  width: 1000px;
+  height: 300px;
+}
+
+#data {
+  width: 400px;
+  height: 300px;
+  overflow: auto;
+  display: inline-block;
+}
+
+#links {
+  width: 400px;
+  height: 300px;
+  overflow: auto;
+  display: inline-block;
 }

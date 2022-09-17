@@ -60,3 +60,9 @@ let options = {
 
 const gantt = new GanttChart(options);
 gantt.draw();
+const linksDiv = document.getElementById("links");
+const dataDiv = document.getElementById("data");
+dataDiv.textContent = "Activities: \n";
+dataDiv.textContent += JSON.stringify(activities, undefined, 2);
+linksDiv.textContent = "Links: \n";
+linksDiv.textContent += JSON.stringify(links, undefined, 2);

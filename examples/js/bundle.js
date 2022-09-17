@@ -20,7 +20,7 @@ class CPM {
     }
     calculate() {
         this.calculateEarlyStart();
-        this.calculateEarlyFinish();
+        // this.calculateEarlyFinish();
         this.calculateLateStart();
         this.calculateLateFinish();
         this.calculateTotalFloat();
@@ -45,14 +45,14 @@ class CPM {
                         case linkTypes.FF:
                             return predecessor.ef + link.lag - activity.duration;
                         case linkTypes.SS:
-                            return predecessor.es + link.lag + activity.duration;
+                            return predecessor.es + link.lag;
                         case linkTypes.SF:
                             return predecessor.ls + link.lag - activity.duration;
                     }
                     // return predecessor.ef;
                 }));
                 console.log("max", max);
-                activity.es = max + 1;
+                activity.es = max;
                 activity.ef = activity.es + activity.duration;
             }
         });
@@ -759,8 +759,8 @@ class Table {
         }
     }
     drawRow(data, update = false) {
-        this.tableBody.innerHTML = "";
-        this.rowCounter = 0;
+        // this.tableBody.innerHTML = "";
+        // this.rowCounter = 0;
         if (data.children.length > 0) {
             if (data.expanded && data.expanded === true) {
                 data.expanded = true;
@@ -1535,3 +1535,9 @@ let options = {
 
 const gantt = new GanttChart(options);
 gantt.draw();
+const linksDiv = document.getElementById("links");
+const dataDiv = document.getElementById("data");
+dataDiv.textContent = "Activities: \n";
+dataDiv.textContent += JSON.stringify(activities, undefined, 2);
+linksDiv.textContent = "Links: \n";
+linksDiv.textContent += JSON.stringify(links, undefined, 2);

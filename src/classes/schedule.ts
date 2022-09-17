@@ -15,7 +15,7 @@ export class CPM {
 
   calculate() {
     this.calculateEarlyStart();
-    this.calculateEarlyFinish();
+    // this.calculateEarlyFinish();
     this.calculateLateStart();
     this.calculateLateFinish();
     this.calculateTotalFloat();
@@ -45,7 +45,7 @@ export class CPM {
               case linkTypes.FF:
                 return predecessor.ef + link.lag - activity.duration;
               case linkTypes.SS:
-                return predecessor.es + link.lag + activity.duration;
+                return predecessor.es + link.lag;
               case linkTypes.SF:
                 return predecessor.ls + link.lag - activity.duration;
             }
@@ -53,7 +53,7 @@ export class CPM {
           })
         );
         console.log("max", max);
-        activity.es = max + 1;
+        activity.es = max;
         activity.ef = activity.es + activity.duration;
       }
     });
