@@ -1,0 +1,42 @@
+{
+  "name": "cpm.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "version": "1.0.0",
+  "description": "CPM.js is a JavaScript library for performing critical path method calculation. It is developed in Typescript to be able to run in both Node.js and browser.",
+  "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HassanEmam/cpm.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HassanEmam/cpm.js/issues"
+  },
+  "homepage": "https://github.com/HassanEmam/cpm.js#readme",
+  "devDependencies": {
+    "@types/node": "^18.7.14",
+    "@types/webpack": "^5.28.0",
+    "@webpack-cli/generators": "^2.5.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "declaration-bundler-webpack-plugin": "^1.0.3",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.1",
+    "wepack-cli": "^0.0.1-security"
+  }
+}
