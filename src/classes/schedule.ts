@@ -20,32 +20,41 @@ export class CPM {
     this.calculateLateFinish();
     this.calculateTotalFloat();
     this.calculateStartAndEndDates();
+    console.log(this.activities);
   }
 
   calculateEarlyStart() {
     this.activities.forEach((activity) => {
-      const preds = this.links.filter(
+      const predecessors = this.links.filter(
         (link) => link.successor_id === activity.id
       );
-      console.log(preds);
-    });
-
-    this.activities.forEach((activity) => {
-      if (activity.id === 1) {
+      console.log(activity, predecessors);
+      if (predecessors.length === 0) {
         activity.es = 0;
+        activity.ef = activity.es + activity.duration;
       } else {
-        const predecessors = this.links.filter(
-          (link) => link.successor_id === activity.id
-        );
         const max = Math.max(
           ...predecessors.map((link) => {
             const predecessor = this.activities.find(
               (activity) => activity.id === link.predecessor_id
             );
-            return predecessor.ef;
+            console.log("predecessor", predecessor);
+            switch (link.type) {
+              case linkTypes.FS:
+                return predecessor.ef + link.lag;
+              case linkTypes.FF:
+                return predecessor.ef + link.lag - activity.duration;
+              case linkTypes.SS:
+                return predecessor.es + link.lag + activity.duration;
+              case linkTypes.SF:
+                return predecessor.ls + link.lag - activity.duration;
+            }
+            // return predecessor.ef;
           })
         );
-        activity.es = max;
+        console.log("max", max);
+        activity.es = max + 1;
+        activity.ef = activity.es + activity.duration;
       }
     });
   }
@@ -91,8 +100,8 @@ export class CPM {
 
   calculateStartAndEndDates() {
     this.activities.forEach((activity) => {
-      activity.start = addDays(this.startDate, activity.es + 1);
-      activity.end = addDays(this.startDate, activity.ef + 1);
+      activity.start = addDays(this.startDate, activity.es);
+      activity.end = addDays(this.startDate, activity.ef);
     });
   }
 
