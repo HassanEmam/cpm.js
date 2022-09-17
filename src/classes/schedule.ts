@@ -41,7 +41,7 @@ export class CPM {
             console.log("predecessor", predecessor);
             switch (link.type) {
               case linkTypes.FS:
-                return predecessor.ef + link.lag;
+                return predecessor.ef + link.lag + 1;
               case linkTypes.FF:
                 return predecessor.ef + link.lag - activity.duration;
               case linkTypes.SS:

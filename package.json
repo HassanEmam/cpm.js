@@ -2,7 +2,7 @@
   "name": "@constology/cpm.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "CPM.js is a JavaScript library for performing critical path method calculation. It is developed in Typescript to be able to run in both Node.js and browser.",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
