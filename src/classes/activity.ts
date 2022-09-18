@@ -1,3 +1,5 @@
+import { Link } from "./links";
+
 export interface iActivity {
   id: number;
   name: string;
@@ -9,6 +11,10 @@ export interface iActivity {
   tf?: number;
   start?: Date;
   end?: Date;
+  lateStart?: Date;
+  lateEnd?: Date;
+  predessors?: Link[] | null;
+  successors?: Link[] | null;
 }
 
 export class Activity {
